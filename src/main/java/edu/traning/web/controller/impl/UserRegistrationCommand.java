@@ -18,7 +18,7 @@ public class UserRegistrationCommand implements Command {
     private final UserLogic logic = logicProvider.getLogicUser();
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws  IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
 
             UserRegistrationInfo user = new UserRegistrationInfo();

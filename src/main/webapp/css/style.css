@@ -105,6 +105,18 @@ nav ul li a:hover, #regAuth a:hover {
     background-color: #F77408;
 }
 
+#closedButtons {
+    color: #A9A9A9;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#closedButtons:hover {
+    background-color: #808080;
+}
+
 .logo {
 	color: #F77408;
 }
@@ -116,8 +128,15 @@ nav ul li a:hover, #regAuth a:hover {
 	font-size: 1.2em;
 }
 
-/* Стили для main */
+/* Стили для about */
 
+#about_us {
+	width: 76%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	padding: 2%;
+}
 
 /* Стили для статей */
 
@@ -139,8 +158,14 @@ nav ul li a:hover, #regAuth a:hover {
     color: #F77408;
 }
 
-#item div {
-    margin-bottom: 10px;
+#article div {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+#divider {
+    border-top: 3px solid black;
 }
 
 #article a:hover {
@@ -252,4 +277,68 @@ footer #right {
 
 #containerRegistr a:hover {
 	color: #F77408;
+}
+
+/* Стили для сраницы clinic*/
+
+#listOfClinics {
+	width: 76%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	padding: 2%;
+	margin-top: 20px;
+}
+
+#listOfClinics a {
+    color: #505050;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#listOfClinics a:hover {
+    background-color: #F77408;
+}
+
+#search_form {
+	width: 80%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	margin-top: 20px;
+}
+
+#search_form input{
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+}
+
+#search_form button{
+    padding: 10px 20px;
+    background-color: #505050;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search_form button:hover {
+    background-color: #F77408;
+}
+
+/* Стили для сраницы clinicInfo*/
+
+#clinicInfo {
+	width: 76%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	padding: 2%;
 }

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import edu.traning.web.controller.Command;
+import edu.traning.web.entity.ContactsCommunications;
 import edu.traning.web.entity.News;
 
+import edu.traning.web.logic.InformationLogic;
 import edu.traning.web.logic.LogicException;
 import edu.traning.web.logic.LogicProvider;
 import edu.traning.web.logic.NewsLogic;
@@ -23,12 +25,17 @@ public class GoToIndexPade implements Command {
 
     private final NewsLogic logic = logicProvider.getLogicNews();
 
+    private final InformationLogic logicContact = logicProvider.getLogicContacts();
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
             List<News> mainNews = logic.lastNews();
             request.setAttribute("mainNews", mainNews);
+
+            List<ContactsCommunications> contactsFooter = logicContact.allConnectionsWithUs();
+            request.setAttribute("contactsFooter", contactsFooter);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/main_index.jsp");
             dispatcher.forward(request, response);

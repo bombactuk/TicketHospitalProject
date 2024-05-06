@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpSession;
 public class UserAuthorizationCommand implements Command {
 
     private final LogicProvider logicProvider = LogicProvider.getInstance();
-
     private final UserLogic logic = logicProvider.getLogicUser();
 
     @Override
@@ -26,16 +25,16 @@ public class UserAuthorizationCommand implements Command {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
 
-            System.out.println("Perform user authentication and authorization. Login: " + login);
-
             User user = logic.authorisationUser(new UserAuthorizationInfo(login, password));
 
             if (user != null) {
 
-                HttpSession session = (HttpSession) request.getSession(true);
-                session.setAttribute("user", user);
+                HttpSession session = request.getSession(true);
 
-                response.sendRedirect("urlToServlet?command=go_to_main_page");
+                session.setAttribute("userRole", user.getRole());
+                session.setAttribute("userName", user.getName());
+
+                response.sendRedirect("urlToServlet?command=go_to_index_page");
 
             } else {
 
@@ -46,7 +45,6 @@ public class UserAuthorizationCommand implements Command {
         } catch (LogicException e) {
             response.getWriter().print("Authorisation Error");
         }
-
 
     }
 

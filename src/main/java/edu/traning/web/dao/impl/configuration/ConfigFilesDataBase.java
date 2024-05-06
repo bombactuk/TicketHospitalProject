@@ -35,6 +35,7 @@ public final class ConfigFilesDataBase {
             url = props.getProperty("url");
             username = props.getProperty("username");
             password = props.getProperty("password");
+
         }
 
     }

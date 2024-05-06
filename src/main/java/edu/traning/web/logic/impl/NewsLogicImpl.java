@@ -16,7 +16,7 @@ public class NewsLogicImpl implements NewsLogic {
     private final NewsDao dao = provider.getNewsDao();
 
     @Override
-    public List<News> lastNews() throws LogicException{
+    public List<News> lastNews() throws LogicException {
 
         try {
             return dao.lastNews();
