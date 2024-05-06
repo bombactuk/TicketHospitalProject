@@ -3,7 +3,8 @@ package edu.traning.web.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.traning.web.controller.impl.*;
+import edu.traning.web.controller.impl.command.*;
+import edu.traning.web.controller.impl.pageTransition.*;
 
 public class CommandProvider {
 
@@ -22,6 +23,9 @@ public class CommandProvider {
         this.repository.put(CommandName.GO_TO_CLINICS, new GoToClinics());
         this.repository.put(CommandName.GO_TO_CLINIC_INFO, new GoToClinicInfo());
         this.repository.put(CommandName.SEARCH_CLINIC, new ClinicSearchCommand());
+        this.repository.put(CommandName.GO_TO_USER_PROFILE, new GoToProfileUser());
+        this.repository.put(CommandName.GO_TO_ADMIN_PROFILE, new GoToProfileAdmin());
+        this.repository.put(CommandName.FUNCTION_ADMIN_PROFILE, new ClinicFunctionCommand());
 
     }
 

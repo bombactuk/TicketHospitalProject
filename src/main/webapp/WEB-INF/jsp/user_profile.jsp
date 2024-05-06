@@ -75,21 +75,12 @@
 
     </header>
 
-    <div id="clinicInfo">
+    <div id="userInfo">
 
-        <c:forEach var="clinicInformation" items="${requestScope.infoClinic}">
-
-                <h2>${clinicInformation.name}</h2>
-                <p>График работы: ${clinicInformation.schedule} </p>
-                <p>${clinicInformation.country},${clinicInformation.city}</p>
-                <p>Адрес: ${clinicInformation.address}</p>
-                <p>Общая информация:</p>
-                <p>${clinicInformation.generalInformation}</p>
-                <p>Структура:</p>
-                <p>${clinicInformation.structure}</p>
-                <p> Номер регистратуры: ${clinicInformation.registrationNumber}</p>
-
-        </c:forEach>
+       <h2> Имя: ${sessionScope.userName} </h2>
+       <p >День Рождение: ${sessionScope.userBirthday} </p>
+       <p> Страна: ${sessionScope.userCountry} </p>
+       <p> Mail: ${sessionScope.userLogin} </p>
 
 	</div>
 

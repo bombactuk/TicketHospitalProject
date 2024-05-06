@@ -1,4 +1,4 @@
-package edu.traning.web.controller.impl;
+package edu.traning.web.controller.impl.command;
 
 import java.io.IOException;
 

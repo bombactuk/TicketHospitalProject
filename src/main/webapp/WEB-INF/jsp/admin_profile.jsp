@@ -75,23 +75,52 @@
 
     </header>
 
-    <div id="clinicInfo">
+    <form action="urlToServlet" method="post">
 
-        <c:forEach var="clinicInformation" items="${requestScope.infoClinic}">
+    	<input type="hidden" name="command" value="function_admin_profile"/>
 
-                <h2>${clinicInformation.name}</h2>
-                <p>График работы: ${clinicInformation.schedule} </p>
-                <p>${clinicInformation.country},${clinicInformation.city}</p>
-                <p>Адрес: ${clinicInformation.address}</p>
-                <p>Общая информация:</p>
-                <p>${clinicInformation.generalInformation}</p>
-                <p>Структура:</p>
-                <p>${clinicInformation.structure}</p>
-                <p> Номер регистратуры: ${clinicInformation.registrationNumber}</p>
+	    <select class="form-control" id="functionAdmin" placeholder="Функции администратора" name="function" required>
 
-        </c:forEach>
+	        <option value="">Выберите функцию</option>
+		    <option value="addClinic">Добавление поликлинники</option>
+		    <option value="updateClinic">Изменение поликлинники</option>
+		    <option value="deleteClinic">Удаление поликлинники</option>
+		    <option value="addNews">Добавление статьи</option>
+		    <option value="updateNews">Редактирование статьи</option>
+		    <option value="deleteNews">Удаление статьи</option>
+		    <!-- Добавьте другие по необходимости -->
 
-	</div>
+	    </select>
+
+	    <button id="functionChoice" type="submit" class="btn btn-primary">Выбрать</button>
+
+	</form>
+
+	<c:if test="${(param.functionInformation eq 'addClinic')}">
+
+        <div id="formFunction">
+
+            <form action="urlToServlet" method="post">
+
+                <input type="hidden" name="command" value="add_clinic"/>
+
+                <input type="text" placeholder="Название поликлинники" id="nameClinic" name="name" required>
+
+                <input type="text" placeholder="Страна" id="countryClinic" name="country" required>
+
+                <input type="text" placeholder="Город" id="cityClinic" name="city" required>
+
+                <input type="text" placeholder="Адресс" id="addressClinic" name="address" required>
+
+                <input type="text" placeholder="Номер регистратуры" id="numberClinic" name="number" required>
+
+                <input type="text" placeholder="Информация" id="generalClinic" name="general" required>
+
+            </form>
+
+        </div>
+
+    </c:if>
 
     <footer>
 

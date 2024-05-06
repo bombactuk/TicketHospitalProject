@@ -20,7 +20,8 @@
         <h1><span class="logo">Ticket</span>Reservation</h1>
 
         <nav>
-             <ul>
+
+            <ul>
 
                 <li><a href="urlToServlet?command=go_to_index_page">Главная</a></li>
                 <li><a href="urlToServlet?command=go_to_about_us">О нас</a></li>
@@ -31,21 +32,23 @@
                     <li onclick ="showMessageAuthorization()" id="closedButtons">Доктора</li>
 
                     <script>
+
                         function showMessageAuthorization() {
-                           alert("Для полного доступа функционалу надо авторизоваться");
-                       }
+                            alert("Для полного доступа функционалу надо авторизоваться");
+                        }
+
                     </script>
 
                 </c:if>
 
-        	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
+         	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
 
                     <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
                     <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
 
-        	    </c:if>
+         	    </c:if>
 
-             </ul>
+            </ul>
 
             <c:if test="${(sessionScope.userRole eq null)}">
 
@@ -56,7 +59,15 @@
 
             <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
 
-                <div id="regAuth">Привет <c:out value="${sessionScope.userName}" /></div>
+                <div id="regAuth">
+
+                    <a href="urlToServlet?command=go_to_user_profile">
+
+                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+
+                    </a>
+
+                </div>
 
             </c:if>
 

@@ -31,22 +31,22 @@
                     <li onclick ="showMessageAuthorization()" id="closedButtons">Медучреждения</li>
                     <li onclick ="showMessageAuthorization()" id="closedButtons">Доктора</li>
 
-                   <script>
+                    <script>
 
-                       function showMessageAuthorization() {
-                           alert("Для полного доступа функционалу надо авторизоваться");
-                       }
+                        function showMessageAuthorization() {
+                            alert("Для полного доступа функционалу надо авторизоваться");
+                        }
 
-                   </script>
+                    </script>
 
                 </c:if>
 
-        	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
+         	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
 
                     <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
                     <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
 
-        	    </c:if>
+         	    </c:if>
 
             </ul>
 
@@ -59,12 +59,20 @@
 
             <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
 
-                <div id="regAuth">Привет <c:out value="${sessionScope.userName}" /></div>
+                <div id="regAuth">
+
+                    <a href="urlToServlet?command=go_to_user_profile">
+
+                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+
+                    </a>
+
+                </div>
 
             </c:if>
 
         </nav>
-    
+
     </header>
 
 	<div id="containerRegistr" class="container mt-5">

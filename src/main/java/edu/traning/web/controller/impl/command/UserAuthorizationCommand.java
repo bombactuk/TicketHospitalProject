@@ -1,4 +1,4 @@
-package edu.traning.web.controller.impl;
+package edu.traning.web.controller.impl.command;
 
 import java.io.IOException;
 
@@ -33,6 +33,9 @@ public class UserAuthorizationCommand implements Command {
 
                 session.setAttribute("userRole", user.getRole());
                 session.setAttribute("userName", user.getName());
+                session.setAttribute("userLogin", user.getLogin());
+                session.setAttribute("userBirthday", user.getBirthday());
+                session.setAttribute("userCountry", user.getCountry());
 
                 response.sendRedirect("urlToServlet?command=go_to_index_page");
 

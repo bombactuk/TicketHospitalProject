@@ -1,4 +1,4 @@
-package edu.traning.web.controller.impl;
+package edu.traning.web.controller.impl.pageTransition;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,11 +15,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-public class GoToTheAuthorization implements Command {
+public class GoToTheRegistrationPage implements Command {
 
     private final LogicProvider logicProvider = LogicProvider.getInstance();
     private final InformationLogic logicContact = logicProvider.getLogicContacts();
-
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,15 +28,14 @@ public class GoToTheAuthorization implements Command {
             List<ContactsCommunications> contactsFooter = logicContact.allConnectionsWithUs();
             request.setAttribute("contactsFooter", contactsFooter);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/authorization.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/registration.jsp");
             dispatcher.forward(request, response);
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go authorization Error");
+            response.getWriter().print("Go registration Error");
 
         }
-
 
     }
 

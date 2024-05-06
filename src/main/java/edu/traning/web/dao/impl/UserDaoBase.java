@@ -34,7 +34,10 @@ public class UserDaoBase implements UserDao {
             resSet = prSt.executeQuery();
 
             if (resSet.next()) {
-                return new User(resSet.getString(4), resSet.getString(7));
+
+                return new User(resSet.getString(4),resSet.getString(7),
+                        resSet.getString(2), resSet.getString(5),resSet.getString(6));
+
             } else {
 
                 return null;
