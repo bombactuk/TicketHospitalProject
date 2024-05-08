@@ -5,6 +5,7 @@ import edu.traning.web.dao.UserDao;
 import edu.traning.web.dao.impl.configuration.ConfigFilesDataBase;
 import edu.traning.web.entity.User;
 import edu.traning.web.entity.UserAuthorizationInfo;
+import edu.traning.web.entity.UserInfo;
 import edu.traning.web.entity.UserRegistrationInfo;
 
 import java.io.IOException;
@@ -12,12 +13,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class UserDaoBase implements UserDao {
 
     private final ConfigFilesDataBase dataBase = ConfigFilesDataBase.getInstance();
 
-    private static final String accountAuthorizationUser = "SELECT * FROM user_account WHERE login = ?" + " AND password = ?";
+    private static final String accountAuthorizationUser = "SELECT * FROM user_account WHERE login = ?" +
+            " AND password = ?";
 
     @Override
     public User authorisationUser(UserAuthorizationInfo user) throws DaoException {
@@ -35,8 +38,42 @@ public class UserDaoBase implements UserDao {
 
             if (resSet.next()) {
 
-                return new User(resSet.getString(4),resSet.getString(7),
-                        resSet.getString(2), resSet.getString(5),resSet.getString(6));
+                return new User(resSet.getString(4), resSet.getString(7),
+                        resSet.getInt(1), resSet.getString(8));
+
+            } else {
+
+                return null;
+
+            }
+
+        } catch (IOException | SQLException e) {
+
+            throw new DaoException(e);
+
+        }
+
+    }
+
+    private static final String accountAuthorizationTokenUser = "SELECT * FROM user_account WHERE token = ?";
+
+    @Override
+    public User authorisationUser(User user) throws DaoException {
+
+        ResultSet resSet;
+
+        try (Connection dbConnection = dataBase.getConnection()) {
+
+            PreparedStatement prSt = dbConnection.prepareStatement(accountAuthorizationTokenUser);
+
+            prSt.setString(1, user.getToken());
+
+            resSet = prSt.executeQuery();
+
+            if (resSet.next()) {
+
+                return new User(resSet.getString(4), resSet.getString(7),
+                        resSet.getInt(1), resSet.getString(8));
 
             } else {
 
@@ -87,6 +124,40 @@ public class UserDaoBase implements UserDao {
             } else {
 
                 return false;
+
+            }
+
+        } catch (IOException | SQLException e) {
+
+            throw new DaoException(e);
+
+        }
+
+    }
+
+    private static final String accountInformationUser = "SELECT * FROM user_account WHERE iduser_account = ?";
+
+    @Override
+    public UserInfo informationUser(User user) throws DaoException {
+
+        ResultSet resSet;
+
+        try (Connection dbConnection = dataBase.getConnection()) {
+
+            PreparedStatement prSt = dbConnection.prepareStatement(accountInformationUser);
+
+            prSt.setInt(1, user.getId());
+
+            resSet = prSt.executeQuery();
+
+            if (resSet.next()) {
+
+                return new UserInfo(resSet.getString(4), resSet.getString(2),
+                        LocalDate.parse(resSet.getString(5)), resSet.getString(6));
+
+            } else {
+
+                return null;
 
             }
 

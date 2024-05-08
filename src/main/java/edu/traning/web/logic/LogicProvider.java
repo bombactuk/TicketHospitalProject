@@ -1,9 +1,6 @@
 package edu.traning.web.logic;
 
-import edu.traning.web.logic.impl.ClinicLogicImpl;
-import edu.traning.web.logic.impl.InformationLogicImpl;
-import edu.traning.web.logic.impl.NewsLogicImpl;
-import edu.traning.web.logic.impl.UserLogicImpl;
+import edu.traning.web.logic.impl.*;
 
 public final class LogicProvider {
 
@@ -12,6 +9,7 @@ public final class LogicProvider {
     private NewsLogic logicNews = new NewsLogicImpl();
     private InformationLogic logicContacts = new InformationLogicImpl();
     private ClinicLogic logicClinic = new ClinicLogicImpl();
+    private EncryptionLogic logicEncryption = new EncryptionLogicImpl();
 
     private LogicProvider() {
     }
@@ -30,6 +28,10 @@ public final class LogicProvider {
 
     public ClinicLogic getLogicClinic() {
         return this.logicClinic;
+    }
+
+    public EncryptionLogic getLogicEncryption() {
+        return this.logicEncryption;
     }
 
     public static LogicProvider getInstance() {

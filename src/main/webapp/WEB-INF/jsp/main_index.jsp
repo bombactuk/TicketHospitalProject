@@ -57,29 +57,15 @@
 
             </c:if>
 
-            <c:if test="${(sessionScope.userRole eq ('user'))}">
+            <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
 
                 <div id="regAuth">
 
-                    <a href="urlToServlet?command=go_to_user_profile">
+                    <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
                     </a>
-
-                </div>
-
-            </c:if>
-
-            <c:if test="${(sessionScope.userRole eq ('admin')) }">
-
-                <div id="regAuth">
-
-                   <a href="urlToServlet?command=go_to_admin_profile">
-
-                     Добро пожаловать <c:out value="${sessionScope.userName}" />
-
-                   </a>
 
                 </div>
 

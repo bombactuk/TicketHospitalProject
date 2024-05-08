@@ -1,7 +1,6 @@
 package edu.traning.web.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class User implements Serializable {
@@ -10,24 +9,26 @@ public class User implements Serializable {
 
     private String name;
     private String role;
-    private String login;
-    private LocalDate birthday;
-    private String country;
+    private int id;
+    private String token;
 
     public User() {
 
     }
 
-    public User(String name, String role) {
-        this.name = name;
-        this.role = role;
+    public User(int id) {
+        this.id = id;
     }
 
-    public User(String name, String role, String login, String birthday, String country) {
-        this(name, role);
-        this.login = login;
-        this.birthday = LocalDate.parse(birthday);
-        this.country = country;
+    public User(String token) {
+        this.token = token;
+    }
+
+    public User(String name, String role, int id, String token) {
+        this.name = name;
+        this.role = role;
+        this.id = id;
+        this.token = token;
     }
 
     public String getName() {
@@ -46,28 +47,20 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public String getLogin() {
-        return login;
+    public int getId() {
+        return id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public String getToken() {
+        return token;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = LocalDate.parse(birthday);
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override
@@ -75,12 +68,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(role, user.role) && Objects.equals(login, user.login) && Objects.equals(birthday, user.birthday) && Objects.equals(country, user.country);
+        return id == user.id && Objects.equals(name, user.name) && Objects.equals(role, user.role) && Objects.equals(token, user.token);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, role, login, birthday, country);
+        return Objects.hash(name, role, id, token);
     }
 
     @Override
@@ -88,9 +81,8 @@ public class User implements Serializable {
         return "User{" +
                 "name='" + name + '\'' +
                 ", role='" + role + '\'' +
-                ", login='" + login + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", country='" + country + '\'' +
+                ", id=" + id +
+                ", token='" + token + '\'' +
                 '}';
     }
 

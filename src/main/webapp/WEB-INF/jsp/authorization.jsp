@@ -60,7 +60,7 @@
 
                 <div id="regAuth">
 
-                    <a href="urlToServlet?command=go_to_user_profile">
+                    <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
@@ -91,8 +91,13 @@
 			    </c:if>
 
 			    <input type="email" id="inputEmail" class="form-control" placeholder="Email адрес" name="login" required autofocus>
+
 			    <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" name="password" required>
-			
+
+                <label id="remember_me">Запомнить меня</label>
+
+                <input type="checkbox" value="remember-me" name="remember-me">
+
 			    <button id="btn" class="btn btn-lg btn-success btn-block" type="submit">Войти</button>
 			
 			    <div class="text-center mt-2">

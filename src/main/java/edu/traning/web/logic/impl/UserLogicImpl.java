@@ -5,6 +5,7 @@ import edu.traning.web.dao.DaoProvider;
 import edu.traning.web.dao.UserDao;
 import edu.traning.web.entity.User;
 import edu.traning.web.entity.UserAuthorizationInfo;
+import edu.traning.web.entity.UserInfo;
 import edu.traning.web.entity.UserRegistrationInfo;
 import edu.traning.web.logic.LogicException;
 import edu.traning.web.logic.UserLogic;
@@ -26,10 +27,32 @@ public class UserLogicImpl implements UserLogic {
     }
 
     @Override
+    public User authorisationUser(User user) throws LogicException {
+
+        try {
+            return dao.authorisationUser(user);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
     public boolean registrUser(UserRegistrationInfo user) throws LogicException {
 
         try {
             return dao.registrUser(user);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public UserInfo informationUser(User user) throws LogicException {
+
+        try {
+            return dao.informationUser(user);
         } catch (DaoException e) {
             throw new LogicException(e);
         }

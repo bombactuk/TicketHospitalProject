@@ -7,6 +7,9 @@ body {
 }
 
 /* Стили для авторизации*/
+#remember_me {
+        position: absolute;
+}
 
 #container {
     width: 600px;

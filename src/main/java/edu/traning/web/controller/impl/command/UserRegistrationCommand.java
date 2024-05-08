@@ -2,6 +2,7 @@ package edu.traning.web.controller.impl.command;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.UserRegistrationInfo;
@@ -29,6 +30,7 @@ public class UserRegistrationCommand implements Command {
             user.setBirthday(LocalDate.parse(request.getParameter("dob")));
             user.setCountry(request.getParameter("country"));
             user.setRole("user");
+            user.setToken(UUID.randomUUID().toString());
 
             if (logic.registrUser(user)) {
 

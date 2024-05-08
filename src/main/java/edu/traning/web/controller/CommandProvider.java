@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.traning.web.controller.impl.command.*;
-import edu.traning.web.controller.impl.pageTransition.*;
+import edu.traning.web.controller.impl.pagetransition.*;
 
 public class CommandProvider {
 

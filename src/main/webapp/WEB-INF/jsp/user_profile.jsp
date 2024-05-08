@@ -61,7 +61,7 @@
 
                 <div id="regAuth">
 
-                    <a href="urlToServlet?command=go_to_user_profile">
+                    <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
@@ -77,10 +77,13 @@
 
     <div id="userInfo">
 
-       <h2> Имя: ${sessionScope.userName} </h2>
-       <p >День Рождение: ${sessionScope.userBirthday} </p>
-       <p> Страна: ${sessionScope.userCountry} </p>
-       <p> Mail: ${sessionScope.userLogin} </p>
+        <c:set var="infoUser" value="${requestScope.infoUser}" />
+
+        <h2> Имя: ${infoUser.name} </h2>
+        <p >День Рождение: ${infoUser.birthday} </p>
+        <p> Страна: ${infoUser.country} </p>
+        <p> Mail: ${infoUser.login} </p>
+
 
 	</div>
 

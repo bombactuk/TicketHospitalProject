@@ -1,4 +1,4 @@
-package edu.traning.web.controller.impl.pageTransition;
+package edu.traning.web.controller.impl.pagetransition;
 
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.Clinic;

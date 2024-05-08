@@ -14,6 +14,7 @@ public class UserRegistrationInfo implements Serializable {
     private LocalDate birthday;
     private String country;
     private String role;
+    private String token;
 
     public UserRegistrationInfo() {
 
@@ -79,17 +80,25 @@ public class UserRegistrationInfo implements Serializable {
         this.role = role;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRegistrationInfo that = (UserRegistrationInfo) o;
-        return Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(name, that.name) && Objects.equals(birthday, that.birthday) && Objects.equals(country, that.country) && Objects.equals(role, that.role);
+        return Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(name, that.name) && Objects.equals(birthday, that.birthday) && Objects.equals(country, that.country) && Objects.equals(role, that.role) && Objects.equals(token, that.token);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password, name, birthday, country, role);
+        return Objects.hash(login, password, name, birthday, country, role, token);
     }
 
     @Override
@@ -101,6 +110,7 @@ public class UserRegistrationInfo implements Serializable {
                 ", birthday=" + birthday +
                 ", country='" + country + '\'' +
                 ", role='" + role + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 

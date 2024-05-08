@@ -61,7 +61,7 @@
 
                 <div id="regAuth">
 
-                    <a href="urlToServlet?command=go_to_user_profile">
+                    <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
