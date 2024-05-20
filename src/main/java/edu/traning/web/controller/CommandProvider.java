@@ -19,10 +19,10 @@ import edu.traning.web.controller.impl.command.user.UserAuthorizationCommand;
 import edu.traning.web.controller.impl.command.user.UserLogoutCommand;
 import edu.traning.web.controller.impl.command.user.UserRegistrationCommand;
 import edu.traning.web.controller.impl.command.user.UserUpdateCommand;
-import edu.traning.web.controller.impl.doctor.DoctorAddCommand;
-import edu.traning.web.controller.impl.doctor.DoctorDeleteCommand;
-import edu.traning.web.controller.impl.doctor.DoctorSearchCommand;
-import edu.traning.web.controller.impl.doctor.DoctorUpdateCommand;
+import edu.traning.web.controller.impl.command.doctor.DoctorAddCommand;
+import edu.traning.web.controller.impl.command.doctor.DoctorDeleteCommand;
+import edu.traning.web.controller.impl.command.doctor.DoctorSearchCommand;
+import edu.traning.web.controller.impl.command.doctor.DoctorUpdateCommand;
 import edu.traning.web.controller.impl.pagetransition.*;
 
 public class CommandProvider {

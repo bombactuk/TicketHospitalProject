@@ -1,4 +1,4 @@
-package edu.traning.web.controller.impl.doctor;
+package edu.traning.web.controller.impl.command.doctor;
 
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.ContactsCommunications;
