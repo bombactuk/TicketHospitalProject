@@ -38,8 +38,8 @@ public class UserDaoBase implements UserDao {
 
             if (resSet.next()) {
 
-                return new User(resSet.getString(4), resSet.getString(7),
-                        resSet.getInt(1), resSet.getString(8));
+                return new User(resSet.getInt(1), resSet.getString(4), resSet.getString(7),
+                        resSet.getString(8));
 
             } else {
 
@@ -72,14 +72,38 @@ public class UserDaoBase implements UserDao {
 
             if (resSet.next()) {
 
-                return new User(resSet.getString(4), resSet.getString(7),
-                        resSet.getInt(1), resSet.getString(8));
+                return new User(resSet.getInt(1), resSet.getString(4), resSet.getString(7),
+                        resSet.getString(8));
 
             } else {
 
                 return null;
 
             }
+
+        } catch (IOException | SQLException e) {
+
+            throw new DaoException(e);
+
+        }
+
+    }
+
+    private static final String addTokenUser = "UPDATE user_account SET token = ? WHERE iduser_account = ?";
+
+    @Override
+    public boolean addTokenUser(User user) throws DaoException {
+
+        try (Connection dbConnection = dataBase.getConnection()) {
+
+            PreparedStatement prSt = dbConnection.prepareCall(addTokenUser);
+
+            prSt.setString(1, user.getToken());
+            prSt.setInt(2, user.getId());
+
+            prSt.executeUpdate();
+
+            return true;
 
         } catch (IOException | SQLException e) {
 
@@ -165,6 +189,71 @@ public class UserDaoBase implements UserDao {
 
             throw new DaoException(e);
 
+        }
+
+    }
+
+    private static final String accountUpdateInformationUser = "SELECT * FROM user_account WHERE iduser_account = ?";
+
+    @Override
+    public User informationUserUpdate(User user) throws DaoException {
+
+        ResultSet resSet;
+
+        try (Connection dbConnection = dataBase.getConnection()) {
+
+            PreparedStatement prSt = dbConnection.prepareStatement(accountUpdateInformationUser);
+
+            prSt.setInt(1, user.getId());
+
+            resSet = prSt.executeQuery();
+
+            if (resSet.next()) {
+
+                return new User(resSet.getInt(1), resSet.getString(4), resSet.getString(7));
+
+            } else {
+
+                return null;
+
+            }
+
+        } catch (IOException | SQLException e) {
+
+            throw new DaoException(e);
+
+        }
+
+    }
+
+    private static final String updateUserIntoDataBase = "UPDATE user_account SET name = ?, role = ?" +
+            " WHERE iduser_account = ?";
+
+    @Override
+    public boolean updateUser(User user) throws DaoException {
+
+        try (Connection dbConnection = dataBase.getConnection()) {
+
+            if (user != null) {
+
+                PreparedStatement prSt = dbConnection.prepareCall(updateUserIntoDataBase);
+
+                prSt.setString(1, user.getName());
+                prSt.setString(2, user.getRole());
+                prSt.setInt(3, user.getId());
+
+                prSt.executeUpdate();
+
+                return true;
+
+            } else {
+
+                return false;
+
+            }
+
+        } catch (IOException | SQLException e) {
+            throw new DaoException(e);
         }
 
     }

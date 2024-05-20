@@ -12,7 +12,8 @@ public class NoSuchCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.getWriter().print("Command Error");
+        response.getWriter().print("<script type='text/javascript'>alert('" + "Command Error" + "');" +
+                " window.history.back();</script>");
 
     }
 

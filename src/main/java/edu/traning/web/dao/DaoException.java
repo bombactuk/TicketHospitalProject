@@ -1,7 +1,10 @@
 package edu.traning.web.dao;
 
+import java.io.Serial;
+
 public class DaoException extends Exception {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public DaoException() {

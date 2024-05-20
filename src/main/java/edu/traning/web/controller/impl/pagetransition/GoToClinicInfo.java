@@ -3,10 +3,8 @@ package edu.traning.web.controller.impl.pagetransition;
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.Clinic;
 import edu.traning.web.entity.ContactsCommunications;
-import edu.traning.web.logic.ClinicLogic;
-import edu.traning.web.logic.InformationLogic;
-import edu.traning.web.logic.LogicException;
-import edu.traning.web.logic.LogicProvider;
+import edu.traning.web.entity.Doctor;
+import edu.traning.web.logic.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +18,7 @@ public class GoToClinicInfo implements Command {
     private final LogicProvider logicProvider = LogicProvider.getInstance();
     private final InformationLogic logicInfo = logicProvider.getLogicContacts();
     private final ClinicLogic logicClinic = logicProvider.getLogicClinic();
+    private final DoctorLogic logicDoctor = logicProvider.getLogicDortor();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,15 +29,18 @@ public class GoToClinicInfo implements Command {
             List<ContactsCommunications> contactsFooter = logicInfo.allConnectionsWithUs();
             request.setAttribute("contactsFooter", contactsFooter);
 
-            List<Clinic> infoClinic = logicClinic.clinicInfo(idClinic);
-            request.setAttribute("infoClinic", infoClinic);
+            request.setAttribute("infoClinic", logicClinic.clinicInfo(new Clinic(idClinic)));
+
+            List<Doctor> doctorsList = logicDoctor.listOutputDoctor(idClinic);
+            request.setAttribute("doctorsList", doctorsList);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/clinic_info.jsp");
             dispatcher.forward(request, response);
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go clinic info us Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go clinic info us Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

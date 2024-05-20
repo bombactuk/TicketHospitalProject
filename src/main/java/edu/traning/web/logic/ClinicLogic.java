@@ -8,8 +8,14 @@ public interface ClinicLogic {
 
     List<Clinic> listOutputClinic() throws LogicException;
 
-    List<Clinic> clinicInfo(int idClinic) throws LogicException;
+    Clinic clinicInfo(Clinic clinic) throws LogicException;
 
     List<Clinic> searchClinic(String meaning) throws LogicException;
+
+    boolean addClinic(Clinic clinic) throws LogicException;
+
+    boolean deleteClinic(int idClinic) throws LogicException;
+
+    boolean updateClinic(Clinic clinic) throws LogicException;
 
 }

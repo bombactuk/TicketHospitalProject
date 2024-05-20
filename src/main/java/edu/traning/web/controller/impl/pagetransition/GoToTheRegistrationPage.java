@@ -33,7 +33,8 @@ public class GoToTheRegistrationPage implements Command {
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go registration Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go registration Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

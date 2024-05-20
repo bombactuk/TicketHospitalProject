@@ -1,15 +1,17 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class User implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
+    private int id;
     private String name;
     private String role;
-    private int id;
     private String token;
 
     public User() {
@@ -24,11 +26,17 @@ public class User implements Serializable {
         this.token = token;
     }
 
-    public User(String name, String role, int id, String token) {
+    public User(int id, String name, String role, String token) {
+        this.id = id;
         this.name = name;
         this.role = role;
-        this.id = id;
         this.token = token;
+    }
+
+    public User(int id, String name, String role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
     }
 
     public String getName() {

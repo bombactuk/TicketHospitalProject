@@ -1,11 +1,13 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class UserRegistrationInfo implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String login;
@@ -14,7 +16,6 @@ public class UserRegistrationInfo implements Serializable {
     private LocalDate birthday;
     private String country;
     private String role;
-    private String token;
 
     public UserRegistrationInfo() {
 
@@ -80,25 +81,17 @@ public class UserRegistrationInfo implements Serializable {
         this.role = role;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRegistrationInfo that = (UserRegistrationInfo) o;
-        return Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(name, that.name) && Objects.equals(birthday, that.birthday) && Objects.equals(country, that.country) && Objects.equals(role, that.role) && Objects.equals(token, that.token);
+        return Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(name, that.name) && Objects.equals(birthday, that.birthday) && Objects.equals(country, that.country) && Objects.equals(role, that.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password, name, birthday, country, role, token);
+        return Objects.hash(login, password, name, birthday, country, role);
     }
 
     @Override
@@ -110,7 +103,6 @@ public class UserRegistrationInfo implements Serializable {
                 ", birthday=" + birthday +
                 ", country='" + country + '\'' +
                 ", role='" + role + '\'' +
-                ", token='" + token + '\'' +
                 '}';
     }
 

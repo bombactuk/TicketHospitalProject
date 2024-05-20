@@ -1,11 +1,13 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class UserInfo implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String name;

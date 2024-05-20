@@ -11,8 +11,14 @@ public interface UserLogic {
 
     User authorisationUser(User user) throws LogicException;
 
+    boolean addTokenUser(User user) throws LogicException;
+
     boolean registrUser(UserRegistrationInfo user) throws LogicException;
 
     UserInfo informationUser(User user) throws LogicException;
+
+    User informationUserUpdate(User user) throws LogicException;
+
+    boolean updateUser(User user) throws LogicException;
 
 }

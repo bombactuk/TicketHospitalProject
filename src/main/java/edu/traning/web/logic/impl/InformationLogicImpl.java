@@ -27,10 +27,65 @@ public class InformationLogicImpl implements InformationLogic {
     }
 
     @Override
-    public List<AboutInfo> allAboutInfo() throws LogicException {
+    public ContactsCommunications infoFooter(ContactsCommunications footer) throws LogicException {
+
+        try {
+            return dao.infoFooter(footer);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public AboutInfo allAboutInfo() throws LogicException {
 
         try {
             return dao.allAboutInfo();
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean addFooter(ContactsCommunications communication) throws LogicException {
+
+        try {
+            return dao.addFooter(communication);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean deleteFooter(int idFooter) throws LogicException {
+
+        try {
+            return dao.deleteFooter(idFooter);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean updateAboutUs(AboutInfo aboutInfo) throws LogicException {
+
+        try {
+            return dao.updateAboutUs(aboutInfo);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean updateFooter(ContactsCommunications footer) throws LogicException {
+
+        try {
+            return dao.updateFooter(footer);
         } catch (DaoException e) {
             throw new LogicException(e);
         }

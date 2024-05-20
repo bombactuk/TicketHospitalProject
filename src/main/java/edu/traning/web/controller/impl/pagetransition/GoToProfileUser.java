@@ -3,7 +3,6 @@ package edu.traning.web.controller.impl.pagetransition;
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.ContactsCommunications;
 import edu.traning.web.entity.User;
-import edu.traning.web.entity.UserInfo;
 import edu.traning.web.logic.InformationLogic;
 import edu.traning.web.logic.LogicException;
 import edu.traning.web.logic.LogicProvider;
@@ -32,14 +31,15 @@ public class GoToProfileUser implements Command {
             List<ContactsCommunications> contactsFooter = logicInfo.allConnectionsWithUs();
             request.setAttribute("contactsFooter", contactsFooter);
 
-            request.setAttribute("infoUser",logicUser.informationUser(new User(idUser)));
+            request.setAttribute("infoUser", logicUser.informationUser(new User(idUser)));
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/user_profile.jsp");
             dispatcher.forward(request, response);
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go user profile us Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go user profile us Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

@@ -10,6 +10,16 @@ public interface InformationLogic {
 
     List<ContactsCommunications> allConnectionsWithUs() throws LogicException;
 
-    List<AboutInfo> allAboutInfo() throws LogicException;
+    ContactsCommunications infoFooter(ContactsCommunications footer) throws LogicException;
+
+    AboutInfo allAboutInfo() throws LogicException;
+
+    boolean addFooter(ContactsCommunications communication) throws LogicException;
+
+    boolean deleteFooter(int idFooter) throws LogicException;
+
+    boolean updateAboutUs(AboutInfo aboutInfo) throws LogicException;
+
+    boolean updateFooter(ContactsCommunications footer) throws LogicException;
 
 }

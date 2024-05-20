@@ -1,10 +1,12 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class AboutInfo implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String title;

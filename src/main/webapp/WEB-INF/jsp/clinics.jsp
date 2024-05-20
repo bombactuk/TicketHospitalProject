@@ -42,7 +42,7 @@
          	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
 
                     <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
-                    <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
+                    <li><a href="urlToServlet?command=go_to_doctors">Доктора</a></li>
 
          	    </c:if>
 
@@ -55,11 +55,25 @@
 
             </c:if>
 
-            <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
+            <c:if test="${(sessionScope.userRole eq 'user') }">
 
                 <div id="regAuth">
 
                     <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
+
+                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+
+                    </a>
+
+                </div>
+
+            </c:if>
+
+            <c:if test="${(sessionScope.userRole eq 'admin') }">
+
+                <div id="regAuth">
+
+                    <a href="urlToServlet?command=go_to_admin_profile">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 

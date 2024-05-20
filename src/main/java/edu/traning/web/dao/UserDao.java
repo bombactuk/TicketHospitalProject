@@ -11,8 +11,14 @@ public interface UserDao {
 
     User authorisationUser(User user) throws DaoException;
 
+    boolean addTokenUser(User user) throws DaoException;
+
     boolean registrUser(UserRegistrationInfo user) throws DaoException;
 
     UserInfo informationUser(User user) throws DaoException;
+
+    User informationUserUpdate(User user) throws DaoException;
+
+    boolean updateUser(User user) throws DaoException;
 
 }

@@ -1,10 +1,12 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Clinic implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private int idClinic;
@@ -17,29 +19,33 @@ public class Clinic implements Serializable {
     private String structure;
     private String schedule;
 
-    public Clinic(){
+    public Clinic() {
 
     }
 
-    public Clinic(String name, String country, String city, String address){
+    public Clinic(String name, String country, String city, String address) {
         this.name = name;
         this.country = country;
         this.city = city;
         this.address = address;
     }
 
-    public Clinic(int idClinic, String name, String country, String city, String address){
+    public Clinic(int idClinic, String name, String country, String city, String address) {
         this(name, country, city, address);
         this.idClinic = idClinic;
     }
 
     public Clinic(int idClinic, String name, String country, String city, String address, String registrationNumber,
-                  String generalInformation, String structure, String schedule){
+                  String generalInformation, String structure, String schedule) {
         this(idClinic, name, country, city, address);
         this.registrationNumber = registrationNumber;
         this.generalInformation = generalInformation;
         this.structure = structure;
         this.schedule = schedule;
+    }
+
+    public Clinic(int idClinic) {
+        this.idClinic = idClinic;
     }
 
     public int getIdClinic() {

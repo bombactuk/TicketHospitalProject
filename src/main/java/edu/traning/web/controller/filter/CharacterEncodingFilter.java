@@ -9,6 +9,7 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {"/urlToServlet"})
 
 public class CharacterEncodingFilter extends HttpFilter implements Filter {
+
     public CharacterEncodingFilter() {
         super();
     }

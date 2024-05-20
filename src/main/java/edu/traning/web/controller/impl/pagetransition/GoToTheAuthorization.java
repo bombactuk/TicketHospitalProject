@@ -20,7 +20,6 @@ public class GoToTheAuthorization implements Command {
     private final LogicProvider logicProvider = LogicProvider.getInstance();
     private final InformationLogic logicContact = logicProvider.getLogicContacts();
 
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -34,7 +33,8 @@ public class GoToTheAuthorization implements Command {
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go authorization Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go authorization Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

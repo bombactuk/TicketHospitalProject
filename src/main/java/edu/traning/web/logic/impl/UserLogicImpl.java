@@ -38,6 +38,17 @@ public class UserLogicImpl implements UserLogic {
     }
 
     @Override
+    public boolean addTokenUser(User user) throws LogicException {
+
+        try {
+            return dao.addTokenUser(user);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
     public boolean registrUser(UserRegistrationInfo user) throws LogicException {
 
         try {
@@ -53,6 +64,28 @@ public class UserLogicImpl implements UserLogic {
 
         try {
             return dao.informationUser(user);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public User informationUserUpdate(User user) throws LogicException {
+
+        try {
+            return dao.informationUserUpdate(user);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean updateUser(User user) throws LogicException {
+
+        try {
+            return dao.updateUser(user);
         } catch (DaoException e) {
             throw new LogicException(e);
         }

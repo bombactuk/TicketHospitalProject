@@ -44,7 +44,7 @@
          	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
 
                     <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
-                    <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
+                    <li><a href="urlToServlet?command=go_to_doctors">Доктора</a></li>
 
          	    </c:if>
 
@@ -57,11 +57,25 @@
 
             </c:if>
 
-            <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
+            <c:if test="${(sessionScope.userRole eq 'user') }">
 
                 <div id="regAuth">
 
                     <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
+
+                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+
+                    </a>
+
+                </div>
+
+            </c:if>
+
+            <c:if test="${(sessionScope.userRole eq 'admin') }">
+
+                <div id="regAuth">
+
+                    <a href="urlToServlet?command=go_to_admin_profile">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
@@ -77,7 +91,7 @@
 
     <div id="clinicInfo">
 
-        <c:forEach var="clinicInformation" items="${requestScope.infoClinic}">
+        <c:set var="clinicInformation" value="${requestScope.infoClinic}" />
 
                 <h2>${clinicInformation.name}</h2>
                 <p>График работы: ${clinicInformation.schedule} </p>
@@ -89,9 +103,25 @@
                 <p>${clinicInformation.structure}</p>
                 <p> Номер регистратуры: ${clinicInformation.registrationNumber}</p>
 
+	</div>
+
+	<div id="listOfDoctors">
+
+	    <h2>Работающий персонал:</h2>
+
+        <c:forEach var="doctorsList" items="${requestScope.doctorsList}">
+
+            <h2>${doctorsList.fio}</h2>
+            <p>${doctorsList.profession}</p>
+
+            <a href="urlToServlet?command=go_to_doctor_info&idDoctor=${doctorsList.idDoctor}&idClinic=${doctorsList.idClinic}">
+            Подробнее</a>
+
+            <hr id="divider">
+
         </c:forEach>
 
-	</div>
+    </div>
 
     <footer>
 

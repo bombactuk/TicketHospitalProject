@@ -1,8 +1,7 @@
-package edu.traning.web.controller.impl.command;
+package edu.traning.web.controller.impl.command.user;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.UUID;
 
 import edu.traning.web.controller.Command;
 import edu.traning.web.entity.UserRegistrationInfo;
@@ -30,23 +29,34 @@ public class UserRegistrationCommand implements Command {
             user.setBirthday(LocalDate.parse(request.getParameter("dob")));
             user.setCountry(request.getParameter("country"));
             user.setRole("user");
-            user.setToken(UUID.randomUUID().toString());
 
-            if (logic.registrUser(user)) {
+            if (user.getLogin() == null || user.getPassword() == null ||
+                    user.getPassword().length() <= 4 || user.getName() == null) {
 
-                response.sendRedirect("urlToServlet?command=go_to_authorization&" +
-                        "authMessage=Registration completed successfully!");
+                response.sendRedirect("urlToServlet?command=go_to_registration&" +
+                        "regError=Enter correct data!");
 
             } else {
 
-                response.sendRedirect("urlToServlet?command=go_to_registration&" +
-                        "regError=The login already exists!");
+                if (logic.registrUser(user)) {
+
+                    response.sendRedirect("urlToServlet?command=go_to_authorization&" +
+                            "authMessage=Registration completed successfully!");
+
+                } else {
+
+                    response.sendRedirect("urlToServlet?command=go_to_registration&" +
+                            "regError=The login already exists!");
+
+                }
 
             }
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Registration Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Registration Error" + "');" +
+                    " window.history.back();</script>");
+
 
         }
 

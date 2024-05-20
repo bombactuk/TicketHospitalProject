@@ -8,8 +8,14 @@ public interface ClinicDao {
 
     List<Clinic> listOutputClinic() throws DaoException;
 
-    List<Clinic> clinicInfo(int idClinic) throws DaoException;
+    Clinic clinicInfo(Clinic clinic) throws DaoException;
 
     List<Clinic> searchClinic(String meaning) throws DaoException;
+
+    boolean addClinic(Clinic clinic) throws DaoException;
+
+    boolean deleteClinic(int idClinic) throws DaoException;
+
+    boolean updateClinic(Clinic clinic) throws DaoException;
 
 }

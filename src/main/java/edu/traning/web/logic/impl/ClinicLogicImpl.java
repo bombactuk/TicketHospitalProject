@@ -26,10 +26,10 @@ public class ClinicLogicImpl implements ClinicLogic {
     }
 
     @Override
-    public List<Clinic> clinicInfo(int idClinic) throws LogicException {
+    public Clinic clinicInfo(Clinic clinic) throws LogicException {
 
         try {
-            return dao.clinicInfo(idClinic);
+            return dao.clinicInfo(clinic);
         } catch (DaoException e) {
             throw new LogicException(e);
         }
@@ -41,6 +41,39 @@ public class ClinicLogicImpl implements ClinicLogic {
 
         try {
             return dao.searchClinic(meaning);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean addClinic(Clinic clinic) throws LogicException {
+
+        try {
+            return dao.addClinic(clinic);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean deleteClinic(int idClinic) throws LogicException {
+
+        try {
+            return dao.deleteClinic(idClinic);
+        } catch (DaoException e) {
+            throw new LogicException(e);
+        }
+
+    }
+
+    @Override
+    public boolean updateClinic(Clinic clinic) throws LogicException {
+
+        try {
+            return dao.updateClinic(clinic);
         } catch (DaoException e) {
             throw new LogicException(e);
         }

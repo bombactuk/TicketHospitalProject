@@ -44,7 +44,7 @@
          	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
 
                     <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
-                    <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
+                    <li><a href="urlToServlet?command=go_to_doctors">Доктора</a></li>
 
          	    </c:if>
 
@@ -57,11 +57,25 @@
 
             </c:if>
 
-            <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
+            <c:if test="${(sessionScope.userRole eq 'user') }">
 
                 <div id="regAuth">
 
                     <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
+
+                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+
+                    </a>
+
+                </div>
+
+            </c:if>
+
+            <c:if test="${(sessionScope.userRole eq 'admin') }">
+
+                <div id="regAuth">
+
+                    <a href="urlToServlet?command=go_to_admin_profile">
 
                         Добро пожаловать <c:out value="${sessionScope.userName}" />
 
@@ -77,12 +91,10 @@
 
     <div id="about_us">
 
-    	<c:forEach var="aboutInfo" items="${requestScope.aboutInformation}">
+        <c:set var="aboutInfo" value="${requestScope.aboutInformation}" />
 
-           <h2>${aboutInfo.title}</h2>
-           <p>${aboutInfo.text}</p>
-
-        </c:forEach>
+        <h2>${aboutInfo.title}</h2>
+        <p>${aboutInfo.text}</p>
 
 	</div>
 
@@ -111,6 +123,7 @@
 
 		    document.getElementById('right').innerHTML = 'Все права защищены &copy; '
 				+ new Date().getFullYear() + '';
+
 	    </script>
 
     </footer>

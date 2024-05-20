@@ -15,65 +15,79 @@
 
 <body>
 
-    <header>
+        <header>
 
-        <h1><span class="logo">Ticket</span>Reservation</h1>
+            <h1><span class="logo">Ticket</span>Reservation</h1>
 
-        <nav>
+            <nav>
 
-            <ul>
+                <ul>
 
-                <li><a href="urlToServlet?command=go_to_index_page">Главная</a></li>
-                <li><a href="urlToServlet?command=go_to_about_us">О нас</a></li>
+                    <li><a href="urlToServlet?command=go_to_index_page">Главная</a></li>
+                    <li><a href="urlToServlet?command=go_to_about_us">О нас</a></li>
+
+                    <c:if test="${(sessionScope.userRole eq null)}">
+
+                        <li onclick ="showMessageAuthorization()" id="closedButtons">Медучреждения</li>
+                        <li onclick ="showMessageAuthorization()" id="closedButtons">Доктора</li>
+
+                        <script>
+
+                            function showMessageAuthorization() {
+                                alert("Для полного доступа функционалу надо авторизоваться");
+                            }
+
+                        </script>
+
+                    </c:if>
+
+             	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
+
+                        <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
+                        <li><a href="urlToServlet?command=go_to_doctors">Доктора</a></li>
+
+             	    </c:if>
+
+                </ul>
 
                 <c:if test="${(sessionScope.userRole eq null)}">
 
-                    <li onclick ="showMessageAuthorization()" id="closedButtons">Медучреждения</li>
-                    <li onclick ="showMessageAuthorization()" id="closedButtons">Доктора</li>
-
-                    <script>
-
-                        function showMessageAuthorization() {
-                            alert("Для полного доступа функционалу надо авторизоваться");
-                        }
-
-                    </script>
+                    <div id="regAuth"><a href="urlToServlet?command=go_to_registration">Регистрация</a> |
+                    <a href="urlToServlet?command=go_to_authorization">Авторизация</a></div>
 
                 </c:if>
 
-         	    <c:if test="${(sessionScope.userRole eq ('user' || 'admin'))}">
+                <c:if test="${(sessionScope.userRole eq 'user') }">
 
-                    <li><a href="urlToServlet?command=go_to_clinics">Медучреждения</a></li>
-                    <li><a href="urlToServlet?command=go_to_about_us">Доктора</a></li>
+                    <div id="regAuth">
 
-         	    </c:if>
+                        <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
 
-            </ul>
+                            Добро пожаловать <c:out value="${sessionScope.userName}" />
 
-            <c:if test="${(sessionScope.userRole eq null)}">
+                        </a>
 
-                <div id="regAuth"><a href="urlToServlet?command=go_to_registration">Регистрация</a> |
-                <a href="urlToServlet?command=go_to_authorization">Авторизация</a></div>
+                    </div>
 
-            </c:if>
+                </c:if>
 
-            <c:if test="${(sessionScope.userRole eq ('user' || 'admin')) }">
+                <c:if test="${(sessionScope.userRole eq 'admin') }">
 
-                <div id="regAuth">
+                    <div id="regAuth">
 
-                    <a href="urlToServlet?command=go_to_user_profile&idUser=${sessionScope.userId}">
+                        <a href="urlToServlet?command=go_to_admin_profile">
 
-                        Добро пожаловать <c:out value="${sessionScope.userName}" />
+                            Добро пожаловать <c:out value="${sessionScope.userName}" />
 
-                    </a>
+                        </a>
 
-                </div>
+                    </div>
 
-            </c:if>
+                </c:if>
 
-        </nav>
+            </nav>
 
-    </header>
+        </header>
 
 	<div id="containerRegistr" class="container mt-5">
 
@@ -85,13 +99,13 @@
 
 		    <div class="error-message" id="error-message">
 
-            <c:if test="${not (param.regError eq null) }">
+                <c:if test="${not (param.regError eq null) }">
 
-                <c:out value="${param.regError}" />
+                    <c:out value="${param.regError}" />
 
-            </c:if>
+                </c:if>
 
-        </div>
+            </div>
 
 			<div class="form-group">
 			    <input type="text" class="form-control" placeholder="Email адрес" id="username" name="username" required>

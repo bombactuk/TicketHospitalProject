@@ -9,7 +9,7 @@ public final class LogicProvider {
     private NewsLogic logicNews = new NewsLogicImpl();
     private InformationLogic logicContacts = new InformationLogicImpl();
     private ClinicLogic logicClinic = new ClinicLogicImpl();
-    private EncryptionLogic logicEncryption = new EncryptionLogicImpl();
+    private DoctorLogic logicDortor = new DoctorLogicImpl();
 
     private LogicProvider() {
     }
@@ -30,8 +30,8 @@ public final class LogicProvider {
         return this.logicClinic;
     }
 
-    public EncryptionLogic getLogicEncryption() {
-        return this.logicEncryption;
+    public DoctorLogic getLogicDortor() {
+        return this.logicDortor;
     }
 
     public static LogicProvider getInstance() {

@@ -42,7 +42,9 @@ public class GoToIndexPade implements Command {
 
         } catch (LogicException e) {
 
-            response.getWriter().print("go to index Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "go to index Error" + "');" +
+                    " window.history.back();</script>");
+
 
         }
 

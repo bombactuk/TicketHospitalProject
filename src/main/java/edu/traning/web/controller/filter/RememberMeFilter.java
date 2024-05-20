@@ -1,9 +1,6 @@
 package edu.traning.web.controller.filter;
 
-import edu.traning.web.entity.Token;
 import edu.traning.web.entity.User;
-import edu.traning.web.entity.UserAuthorizationInfo;
-import edu.traning.web.logic.EncryptionLogic;
 import edu.traning.web.logic.LogicException;
 import edu.traning.web.logic.LogicProvider;
 import edu.traning.web.logic.UserLogic;
@@ -18,7 +15,6 @@ import java.io.IOException;
 public class RememberMeFilter extends HttpFilter implements Filter {
 
     private final LogicProvider logicProvider = LogicProvider.getInstance();
-    private final EncryptionLogic logicEncryption = logicProvider.getLogicEncryption();
     private final UserLogic logicUser = logicProvider.getLogicUser();
 
     public RememberMeFilter() {
@@ -28,29 +24,33 @@ public class RememberMeFilter extends HttpFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
-        HttpServletResponse httpResponse = (HttpServletResponse) res;
-        HttpServletRequest httpRequest = (HttpServletRequest) req;
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
 
         try {
-            Cookie[] cookies = httpRequest.getCookies();
+            HttpSession session = request.getSession(false);
 
-            for (Cookie c : cookies) {
+            if (session == null) {
 
-                System.out.println("Cookie Name: " + c.getValue());
+                Cookie[] cookies = request.getCookies();
 
-                if (c.getName().equals("remember-me")) {
+                if (cookies != null) {
 
-                    Token transcriptToken = logicEncryption.transcriptToken(new Token(c.getValue()));
+                    for (Cookie c : cookies) {
 
-                    User user = logicUser.authorisationUser(new User(transcriptToken.getToken()));
+                        if (c.getName().equals("remember-me")) {
 
-                    if (user != null) {
+                            User user = logicUser.authorisationUser(new User(c.getValue()));
 
-                        HttpSession session = httpRequest.getSession(true);
+                            if (user != null) {
 
-                        session.setAttribute("userRole", user.getRole());
-                        session.setAttribute("userName", user.getName());
-                        session.setAttribute("userId", user.getId());
+                                session.setAttribute("userRole", user.getRole());
+                                session.setAttribute("userName", user.getName());
+                                session.setAttribute("userId", user.getId());
+
+                            }
+
+                        }
 
                     }
 
@@ -61,7 +61,9 @@ public class RememberMeFilter extends HttpFilter implements Filter {
             chain.doFilter(req, res);
 
         } catch (LogicException e) {
-            throw new RuntimeException(e);
+
+            response.sendRedirect("urlToServlet?command=go_to_index_page");
+
         }
 
     }

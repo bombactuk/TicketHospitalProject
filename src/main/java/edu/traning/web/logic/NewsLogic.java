@@ -8,4 +8,12 @@ public interface NewsLogic {
 
     List<News> lastNews() throws LogicException;
 
+    News infoNews(News news) throws LogicException;
+
+    boolean addNews(News news) throws LogicException;
+
+    boolean deleteNews(int idNews) throws LogicException;
+
+    boolean updateNews(News news) throws LogicException;
+
 }

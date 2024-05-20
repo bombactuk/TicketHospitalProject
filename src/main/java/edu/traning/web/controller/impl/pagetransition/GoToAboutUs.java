@@ -1,7 +1,6 @@
 package edu.traning.web.controller.impl.pagetransition;
 
 import edu.traning.web.controller.Command;
-import edu.traning.web.entity.AboutInfo;
 import edu.traning.web.entity.ContactsCommunications;
 import edu.traning.web.logic.InformationLogic;
 import edu.traning.web.logic.LogicException;
@@ -27,15 +26,15 @@ public class GoToAboutUs implements Command {
             List<ContactsCommunications> contactsFooter = logicInfo.allConnectionsWithUs();
             request.setAttribute("contactsFooter", contactsFooter);
 
-            List<AboutInfo> aboutInfo = logicInfo.allAboutInfo();
-            request.setAttribute("aboutInformation", aboutInfo);
+            request.setAttribute("aboutInformation", logicInfo.allAboutInfo());
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/about_us.jsp");
             dispatcher.forward(request, response);
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go about us Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go about us Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

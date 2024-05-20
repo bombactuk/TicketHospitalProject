@@ -1,9 +1,6 @@
 package edu.traning.web.dao;
 
-import edu.traning.web.dao.impl.ClinicDaoBase;
-import edu.traning.web.dao.impl.InformationDaoBase;
-import edu.traning.web.dao.impl.NewsDaoBase;
-import edu.traning.web.dao.impl.UserDaoBase;
+import edu.traning.web.dao.impl.*;
 
 public final class DaoProvider {
 
@@ -20,6 +17,7 @@ public final class DaoProvider {
     private NewsDao newsDao = new NewsDaoBase();
     private InformationDao contactsDao = new InformationDaoBase();
     private ClinicDao clincDao = new ClinicDaoBase();
+    private DoctorDao doctorDao = new DoctorDaoBase();
 
     public UserDao getUserDao() {
         return userDao;
@@ -35,6 +33,10 @@ public final class DaoProvider {
 
     public InformationDao getContactsDao() {
         return contactsDao;
+    }
+
+    public DoctorDao getDoctorDao() {
+        return doctorDao;
     }
 
     public static DaoProvider getInstance() {

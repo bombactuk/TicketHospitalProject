@@ -1,12 +1,15 @@
 package edu.traning.web.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class News implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
+    private int id;
     private String title;
     private String brief;
     private String img;
@@ -20,6 +23,15 @@ public class News implements Serializable {
         this.brief = brief;
         this.img = img;
         this.link = link;
+    }
+
+    public News(int id, String title, String brief, String img, String link) {
+        this(title, brief, img, link);
+        this.id = id;
+    }
+
+    public News(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -54,23 +66,32 @@ public class News implements Serializable {
         this.img = img;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
-        return Objects.equals(title, news.title) && Objects.equals(brief, news.brief) && Objects.equals(img, news.img) && Objects.equals(link, news.link);
+        return id == news.id && Objects.equals(title, news.title) && Objects.equals(brief, news.brief) && Objects.equals(img, news.img) && Objects.equals(link, news.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, brief, img, link);
+        return Objects.hash(id, title, brief, img, link);
     }
 
     @Override
     public String toString() {
         return "News{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", brief='" + brief + '\'' +
                 ", img='" + img + '\'' +
                 ", link='" + link + '\'' +

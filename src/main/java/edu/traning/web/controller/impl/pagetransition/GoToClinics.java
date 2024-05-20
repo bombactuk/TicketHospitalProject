@@ -37,7 +37,8 @@ public class GoToClinics implements Command {
 
         } catch (LogicException e) {
 
-            response.getWriter().print("Go clinics us Error");
+            response.getWriter().print("<script type='text/javascript'>alert('" + "Go clinics us Error" + "');" +
+                    " window.history.back();</script>");
 
         }
 

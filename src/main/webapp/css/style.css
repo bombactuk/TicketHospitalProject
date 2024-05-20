@@ -158,7 +158,15 @@ nav ul li a:hover, #regAuth a:hover {
 }
 
 #article a {
-    color: #F77408;
+    color: #505050;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#article a:hover {
+    background-color: #F77408;
 }
 
 #article div {
@@ -355,6 +363,18 @@ footer #right {
 	background-color: #f4f4f4;
 	padding: 2%;
 }
+
+#userInfo a {
+    color: #505050;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#userInfo a:hover {
+    background-color: #F77408;
+}
 /* Стили для сраницы admin_profile*/
 
 #functionChoice {
@@ -367,4 +387,54 @@ footer #right {
 
 #functionChoice:hover {
     background-color: #F77408;
+}
+
+#exitAdminProfile a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#exitAdminProfile a:hover {
+    background-color: #F77408;
+}
+
+#error-messageFunction {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* Стили для сраницы clinic*/
+
+#listOfDoctors {
+	width: 76%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	padding: 2%;
+	margin-top: 20px;
+}
+
+#listOfDoctors a {
+    color: #505050;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#listOfDoctors a:hover {
+    background-color: #F77408;
+}
+
+/* Стили для сраницы clinic_info*/
+
+#doctorInfo {
+	width: 76%;
+	margin-left: 10%;
+	border: 1px solid silver;
+	background-color: #f4f4f4;
+	padding: 2%;
 }

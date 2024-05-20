@@ -9,6 +9,16 @@ public interface InformationDao {
 
     List<ContactsCommunications> allConnectionsWithUs() throws DaoException;
 
-    List<AboutInfo> allAboutInfo() throws DaoException;
+    AboutInfo allAboutInfo() throws DaoException;
+
+    boolean addFooter(ContactsCommunications communication) throws DaoException;
+
+    boolean deleteFooter(int idFooter) throws DaoException;
+
+    boolean updateAboutUs(AboutInfo aboutInfo) throws DaoException;
+
+    ContactsCommunications infoFooter(ContactsCommunications footer) throws DaoException;
+
+    boolean updateFooter(ContactsCommunications footer) throws DaoException;
 
 }
