@@ -12,8 +12,6 @@ public interface NewsDao {
 
     boolean addNews(News news) throws DaoException;
 
-    boolean deleteNews(int idNews) throws DaoException;
-
     boolean updateNews(News news) throws DaoException;
 
 }

@@ -16,8 +16,6 @@ public interface DoctorLogic {
 
     List<Doctor> searchDoctor(String meaning) throws LogicException;
 
-    boolean deleteDoctor(int idDoctor) throws LogicException;
-
     boolean updateDoctor(Doctor doctor) throws LogicException;
 
 }

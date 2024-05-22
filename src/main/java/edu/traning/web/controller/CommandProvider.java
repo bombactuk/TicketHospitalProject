@@ -5,22 +5,18 @@ import java.util.Map;
 
 import edu.traning.web.controller.impl.command.*;
 import edu.traning.web.controller.impl.command.clinic.ClinicAddCommand;
-import edu.traning.web.controller.impl.command.clinic.ClinicDeleteCommand;
 import edu.traning.web.controller.impl.command.clinic.ClinicSearchCommand;
 import edu.traning.web.controller.impl.command.clinic.ClinicUpdateCommand;
 import edu.traning.web.controller.impl.command.information.FooterAddCommand;
-import edu.traning.web.controller.impl.command.information.FooterDeleteCommand;
 import edu.traning.web.controller.impl.command.information.FooterUpdateCommand;
 import edu.traning.web.controller.impl.command.information.AboutUsUpdateCommand;
 import edu.traning.web.controller.impl.command.news.NewsAddCommand;
-import edu.traning.web.controller.impl.command.news.NewsDeleteCommand;
 import edu.traning.web.controller.impl.command.news.NewsUpdateCommand;
 import edu.traning.web.controller.impl.command.user.UserAuthorizationCommand;
 import edu.traning.web.controller.impl.command.user.UserLogoutCommand;
 import edu.traning.web.controller.impl.command.user.UserRegistrationCommand;
 import edu.traning.web.controller.impl.command.user.UserUpdateCommand;
 import edu.traning.web.controller.impl.command.doctor.DoctorAddCommand;
-import edu.traning.web.controller.impl.command.doctor.DoctorDeleteCommand;
 import edu.traning.web.controller.impl.command.doctor.DoctorSearchCommand;
 import edu.traning.web.controller.impl.command.doctor.DoctorUpdateCommand;
 import edu.traning.web.controller.impl.pagetransition.*;
@@ -52,21 +48,17 @@ public class CommandProvider {
 
         this.repository.put(CommandName.ADD_CLINIC, new ClinicAddCommand());
         this.repository.put(CommandName.SEARCH_CLINIC, new ClinicSearchCommand());
-        this.repository.put(CommandName.DELETE_CLINIC, new ClinicDeleteCommand());
         this.repository.put(CommandName.UPDATE_CLINIC, new ClinicUpdateCommand());
 
         this.repository.put(CommandName.SEARCH_DOCTOR, new DoctorSearchCommand());
         this.repository.put(CommandName.ADD_DOCTOR, new DoctorAddCommand());
-        this.repository.put(CommandName.DELETE_DOCTOR, new DoctorDeleteCommand());
         this.repository.put(CommandName.UPDATE_DOCTOR, new DoctorUpdateCommand());
 
         this.repository.put(CommandName.ADD_FOOTER, new FooterAddCommand());
-        this.repository.put(CommandName.DELETE_FOOTER, new FooterDeleteCommand());
         this.repository.put(CommandName.UPDATE_ABOUT, new AboutUsUpdateCommand());
         this.repository.put(CommandName.UPDATE_FOOTER, new FooterUpdateCommand());
 
         this.repository.put(CommandName.ADD_NEWS, new NewsAddCommand());
-        this.repository.put(CommandName.DELETE_NEWS, new NewsDeleteCommand());
         this.repository.put(CommandName.UPDATE_NEWS, new NewsUpdateCommand());
 
     }

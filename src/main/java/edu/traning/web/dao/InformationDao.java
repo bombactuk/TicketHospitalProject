@@ -13,8 +13,6 @@ public interface InformationDao {
 
     boolean addFooter(ContactsCommunications communication) throws DaoException;
 
-    boolean deleteFooter(int idFooter) throws DaoException;
-
     boolean updateAboutUs(AboutInfo aboutInfo) throws DaoException;
 
     ContactsCommunications infoFooter(ContactsCommunications footer) throws DaoException;

@@ -16,8 +16,6 @@ public interface InformationLogic {
 
     boolean addFooter(ContactsCommunications communication) throws LogicException;
 
-    boolean deleteFooter(int idFooter) throws LogicException;
-
     boolean updateAboutUs(AboutInfo aboutInfo) throws LogicException;
 
     boolean updateFooter(ContactsCommunications footer) throws LogicException;

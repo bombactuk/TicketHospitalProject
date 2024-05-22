@@ -194,37 +194,6 @@ public class DoctorDaoBase implements DoctorDao {
 
     }
 
-    private static final String deleteDoctorIntoDataBase = "DELETE FROM doctors_list WHERE iddoctors_list = ?";
-
-    @Override
-    public boolean deleteDoctor(int idDoctor) throws DaoException {
-
-        try (Connection dbConnection = dataBase.getConnection()) {
-
-            if (idDoctor != 0) {
-
-                PreparedStatement prSt = dbConnection.prepareCall(deleteDoctorIntoDataBase);
-
-                prSt.setInt(1, idDoctor);
-
-                prSt.executeUpdate();
-
-                return true;
-
-            } else {
-
-                return false;
-
-            }
-
-        } catch (IOException | SQLException e) {
-
-            throw new DaoException(e);
-
-        }
-
-    }
-
     private static final String updateDoctorIntoDataBase = "UPDATE doctors_list SET id_clinic = ?, fio = ?, " +
             "profession = ?, description = ? WHERE iddoctors_list = ?";
 

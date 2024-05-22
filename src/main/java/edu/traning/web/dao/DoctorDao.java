@@ -16,8 +16,6 @@ public interface DoctorDao {
 
     List<Doctor> searchDoctor(String meaning) throws DaoException;
 
-    boolean deleteDoctor(int idDoctor) throws DaoException;
-
     boolean updateDoctor(Doctor doctor) throws DaoException;
 
 }

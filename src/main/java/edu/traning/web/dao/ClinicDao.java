@@ -14,8 +14,6 @@ public interface ClinicDao {
 
     boolean addClinic(Clinic clinic) throws DaoException;
 
-    boolean deleteClinic(int idClinic) throws DaoException;
-
     boolean updateClinic(Clinic clinic) throws DaoException;
 
 }

@@ -164,40 +164,6 @@ public class ClinicDaoBase implements ClinicDao {
 
     }
 
-    private static final String deleteClinicAndDoctorIntoDataBase = "DELETE clinics_list, doctors_list" +
-            " FROM clinics_list" +
-            " JOIN doctors_list ON clinics_list.idclinics_list = doctors_list.id_clinic" +
-            " WHERE clinics_list.idclinics_list = ?";
-
-    @Override
-    public boolean deleteClinic(int idClinic) throws DaoException {
-
-        try (Connection dbConnection = dataBase.getConnection()) {
-
-            if (idClinic != 0) {
-
-                PreparedStatement prSt = dbConnection.prepareCall(deleteClinicAndDoctorIntoDataBase);
-
-                prSt.setInt(1, idClinic);
-
-                prSt.executeUpdate();
-
-                return true;
-
-            } else {
-
-                return false;
-
-            }
-
-        } catch (IOException | SQLException e) {
-
-            throw new DaoException(e);
-
-        }
-
-    }
-
     private static final String updateNewsIntoDataBase = "UPDATE clinics_list SET name = ?, country = ?, city = ?, address = ?," +
             " registration_number = ?, general_information = ?, structure = ?, schedule = ? WHERE idclinics_list = ?";
 

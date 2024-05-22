@@ -121,37 +121,6 @@ public class NewsDaoBase implements NewsDao {
 
     }
 
-    private static final String deleteNewsIntoDataBase = "DELETE FROM news_list WHERE idnews_list = ?";
-
-    @Override
-    public boolean deleteNews(int idNews) throws DaoException {
-
-        try (Connection dbConnection = dataBase.getConnection()) {
-
-            if (idNews != 0) {
-
-                PreparedStatement prSt = dbConnection.prepareCall(deleteNewsIntoDataBase);
-
-                prSt.setInt(1, idNews);
-
-                prSt.executeUpdate();
-
-                return true;
-
-            } else {
-
-                return false;
-
-            }
-
-        } catch (IOException | SQLException e) {
-
-            throw new DaoException(e);
-
-        }
-
-    }
-
     private static final String updateNewsIntoDataBase = "UPDATE news_list SET title = ?, brief = ?, img = ?, link = ? " +
             "WHERE idnews_list = ?";
 

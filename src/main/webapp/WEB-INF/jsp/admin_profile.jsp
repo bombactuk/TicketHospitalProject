@@ -100,10 +100,6 @@
 		    <option value="addDoctor">Добавление доктора</option>
 		    <option value="addFooter">Добавление связи с нами</option>
 		    <option value="addNews">Добавление новостей</option>
-		    <option value="deleteClinic">Удаление поликлинники</option>
-		    <option value="deleteDoctor">Удаление доктора</option>
-		    <option value="deleteFooter">Удаление связи с нами</option>
-		    <option value="deleteNews">Удаление новостей</option>
 		    <option value="updateAbout">Редактирование о нас</option>
 		    <option value="idUpdateNews">Редактирование новостей</option>
 		    <option value="idUpdateClinic">Редактирование клиники</option>
@@ -226,78 +222,6 @@
                 <input type="text" placeholder="Описание" id="descriptionDoctor" name="description" required>
 
                 <button id="btnAdminFunction" type="submit" class="btn btn-primary">Добавить</button>
-
-            </form>
-
-        </div>
-
-    </c:if>
-
-    <c:if test="${(requestScope.functionInformation eq 'deleteClinic')}">
-
-        <div id="formFunction">
-
-            <form action="urlToServlet" method="post">
-
-                <input type="hidden" name="command" value="delete_clinic"/>
-
-                <input type="text" placeholder="Id Клиники" id="idClinic" name="idClinic" required>
-
-                <button id="btnAdminFunction" type="submit" class="btn btn-primary">Удалить</button>
-
-            </form>
-
-        </div>
-
-    </c:if>
-
-    <c:if test="${(requestScope.functionInformation eq 'deleteDoctor')}">
-
-        <div id="formFunction">
-
-            <form action="urlToServlet" method="post">
-
-                <input type="hidden" name="command" value="delete_doctor"/>
-
-                <input type="text" placeholder="Id Врача" id="idDoctor" name="idDoctor" required>
-
-                <button id="btnAdminFunction" type="submit" class="btn btn-primary">Удалить</button>
-
-            </form>
-
-        </div>
-
-    </c:if>
-
-    <c:if test="${(requestScope.functionInformation eq 'deleteFooter')}">
-
-        <div id="formFunction">
-
-            <form action="urlToServlet" method="post">
-
-                <input type="hidden" name="command" value="delete_footer"/>
-
-                <input type="text" placeholder="Id Связи с нами" id="idFooter" name="idFooter" required>
-
-                <button id="btnAdminFunction" type="submit" class="btn btn-primary">Удалить</button>
-
-            </form>
-
-        </div>
-
-    </c:if>
-
-    <c:if test="${(requestScope.functionInformation eq 'deleteNews')}">
-
-        <div id="formFunction">
-
-            <form action="urlToServlet" method="post">
-
-                <input type="hidden" name="command" value="delete_news"/>
-
-                <input type="text" placeholder="Id Новостей" id="idNews" name="idNews" required>
-
-                <button id="btnAdminFunction" type="submit" class="btn btn-primary">Удалить</button>
 
             </form>
 

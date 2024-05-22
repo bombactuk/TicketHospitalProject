@@ -14,8 +14,6 @@ public interface ClinicLogic {
 
     boolean addClinic(Clinic clinic) throws LogicException;
 
-    boolean deleteClinic(int idClinic) throws LogicException;
-
     boolean updateClinic(Clinic clinic) throws LogicException;
 
 }

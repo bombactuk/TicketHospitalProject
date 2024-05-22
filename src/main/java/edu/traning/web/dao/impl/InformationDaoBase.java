@@ -118,37 +118,6 @@ public class InformationDaoBase implements InformationDao {
 
     }
 
-    private static final String deleteFooterIntoDataBase = "DELETE FROM contacts_footer WHERE idcontacts_footer = ?";
-
-    @Override
-    public boolean deleteFooter(int idFooter) throws DaoException {
-
-        try (Connection dbConnection = dataBase.getConnection()) {
-
-            if (idFooter != 0) {
-
-                PreparedStatement prSt = dbConnection.prepareCall(deleteFooterIntoDataBase);
-
-                prSt.setInt(1, idFooter);
-
-                prSt.executeUpdate();
-
-                return true;
-
-            } else {
-
-                return false;
-
-            }
-
-        } catch (IOException | SQLException e) {
-
-            throw new DaoException(e);
-
-        }
-
-    }
-
     private static final String updateAboutUsIntoDataBase = "UPDATE about_information SET text = ? " +
             "WHERE idabout_information = 1";
 
